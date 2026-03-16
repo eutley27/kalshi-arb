@@ -25,6 +25,7 @@ def get_market_data():
             time.sleep(0.15)  # Sleep 50ms between calls (20 calls/sec)
         except Exception as e:
             print(f"Error fetching data for {ticker}: {e}")
+            time.sleep(0.15) 
             continue
 
         markets = markets_data.get('markets', [])
@@ -59,6 +60,7 @@ while True:
     markets_to_buy = get_market_data()
     if not markets_to_buy:
         print("No suitable markets found.")
+        time.sleep(10)
         continue
 
     # Step 2: Place a buy order
@@ -96,3 +98,5 @@ while True:
             print(f"Status: {order['status']}")
         else:
             print(f"Error: {response.status_code} - {response.text}")
+            
+    time.sleep(10) 
