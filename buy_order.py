@@ -59,7 +59,6 @@ while True:
     markets_to_buy = get_market_data()
     if not markets_to_buy:
         print("No suitable markets found.")
-        time.sleep(300)  # Sleep before checking again
         continue
 
     # Step 2: Place a buy order
