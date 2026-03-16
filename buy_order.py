@@ -22,6 +22,7 @@ def get_market_data():
             markets_response = requests.get(markets_url)
             markets_response.raise_for_status()
             markets_data = markets_response.json()
+            time.sleep(0.15)  # Sleep 50ms between calls (20 calls/sec)
         except Exception as e:
             print(f"Error fetching data for {ticker}: {e}")
             continue
@@ -44,7 +45,7 @@ def get_market_data():
                 minutes_to_close <= CLOSE_THRESHOLD_MINUTES):
                 yes_no = 'yes' if yes_bid == 0.98 else 'no'
                 buys.append([ticker_val, yes_no])
-        time.sleep(0.15)  # Sleep 50ms between calls (20 calls/sec)
+
     return buys
 
 ###
