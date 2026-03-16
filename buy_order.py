@@ -1,4 +1,4 @@
-from api_call import BASE_URL, get, post, private_demo_key, api_demo_key
+from api_call import BASE_URL, get, post, private_key, api_key
 from datetime import datetime, timezone
 from dateutil import parser as dateutil_parser
 import requests
@@ -86,7 +86,7 @@ while True:
                 "client_order_id": client_order_id
             }
 
-        response = post('/portfolio/orders', order_data, private_demo_key, api_demo_key, BASE_URL)
+        response = post('/portfolio/orders', order_data, private_key, api_key, BASE_URL)
         time.sleep(0.10)  # Sleep briefly to avoid hitting rate limits
         if response.status_code == 201:
             order = response.json()['order']
