@@ -21,10 +21,10 @@ def get_market_data():
             markets_response = requests.get(markets_url, timeout=10)
             markets_response.raise_for_status()
             markets_data = markets_response.json()
-            time.sleep(0.15)
+            time.sleep(0.25)
         except Exception as e:
             print(f"Error fetching data for {ticker}: {e}")
-            time.sleep(0.15) 
+            time.sleep(0.25) 
             continue
 
         markets = markets_data.get('markets', [])
@@ -69,7 +69,7 @@ def get_market_data():
                     }
 
                 response = post('/portfolio/orders', order_data, private_key, api_key, BASE_URL)
-                time.sleep(0.15)  # Sleep briefly to avoid hitting rate limits
+                time.sleep(0.25)  # Sleep briefly to avoid hitting rate limits
                 if response.status_code == 201:
                     order = response.json()['order']
                     orders_placed += 1
