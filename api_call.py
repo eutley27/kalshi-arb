@@ -48,7 +48,7 @@ def get(path, private_key=private_key, api_key_id=api_key, base_url=BASE_URL):
         'KALSHI-ACCESS-TIMESTAMP': timestamp
     }
 
-    resp = requests.get(base_url + path, headers=headers)
+    resp = requests.get(base_url + path, headers=headers, timeout=10)
     if resp.status_code != 200:
         # surface error body for debugging
         try:
@@ -71,4 +71,4 @@ def post(path, data, private_key=private_key, api_key_id=api_key, base_url=BASE_
         'Content-Type': 'application/json'
     }
 
-    return requests.post(base_url + path, headers=headers, json=data)
+    return requests.post(base_url + path, headers=headers, json=data, timeout=10)

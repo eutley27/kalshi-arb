@@ -19,7 +19,7 @@ def get_market_data():
     for ticker in tickers:
         markets_url = f"https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker={ticker}&status=open"
         try:
-            markets_response = requests.get(markets_url)
+            markets_response = requests.get(markets_url, timeout=10)
             markets_response.raise_for_status()
             markets_data = markets_response.json()
             time.sleep(0.15)  # Sleep 50ms between calls (20 calls/sec)
