@@ -12,7 +12,7 @@ def load_tickers(filepath="ticker_list.txt"):
 
 def get_market_data():
     tickers = load_tickers()
-    CLOSE_THRESHOLD_MINUTES = 5
+    ## REDACTED ##
 
     for ticker in tickers:
         orders_placed = 0
@@ -31,8 +31,7 @@ def get_market_data():
         for market in markets:
             try:
                 now = datetime.now(timezone.utc)
-                close_time = dateutil_parser.parse(market['close_time'])
-                minutes_to_close = (close_time - now).total_seconds() / 60
+                ## REDACTED ##
                 yes_bid = float(market.get('yes_bid_dollars', 0))
                 no_bid = float(market.get('no_bid_dollars', 0))
                 status = market.get('status', '')
@@ -42,9 +41,7 @@ def get_market_data():
                 continue
 
             if status == 'active' and (
-                yes_bid == 0.98 or no_bid == 0.98) and (
-                minutes_to_close <= CLOSE_THRESHOLD_MINUTES):
-                yes_no = 'yes' if yes_bid == 0.98 else 'no'
+                ## REDACTED ##
                 print("\nPlacing order...")
                 client_order_id = str(uuid.uuid4())
                 if yes_no == 'yes':
@@ -54,7 +51,7 @@ def get_market_data():
                         "side": yes_no,
                         "count": 1,
                         "type": "limit",
-                        "yes_price": 98,
+                        ## REDACTED ##
                         "client_order_id": client_order_id
                     }
                 else:
@@ -64,7 +61,7 @@ def get_market_data():
                     "side": yes_no,
                     "count": 1,
                     "type": "limit",
-                    "no_price": 98,
+                    ## REDACTED ##
                     "client_order_id": client_order_id
                     }
 
